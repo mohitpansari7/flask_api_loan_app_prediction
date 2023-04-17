@@ -11,6 +11,17 @@ clf = pickle.load(model_pickle)
 def ping():
     return {"message":"Hi, Server is up and running"}
 
+@app.route('/params', methods=['GET'])
+def getParams():
+    parameters = {
+        "Gender":"<Male/Female>",
+        "Married":"<Married/Unmarried>",
+        "ApplicantIncome":5000,
+        "Credit_History":"Cleared Debts",
+        "LoanAmount":50000
+    }
+    return parameters
+
 @app.route('/predict', methods=['POST'])
 def prediction():
     print(request.get_json())
